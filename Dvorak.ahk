@@ -26,6 +26,7 @@ class KeyboardMapper {
 	}
 	disableLayout(){
 		this.currentLayout := ""
+		TrayTip, % "Layout Disabled", % "Switched layout to QWERTY"
 	}
 	switchLayout(layoutName){
 		this.currentLayout := ""
@@ -90,9 +91,8 @@ pDvorak.setNormalLayout("$&[{}(=*)+]!#;,.pyfgcrl/@aoeuidhtns-'qjkxbmwvz")
 pDvorak.setShiftLayout("~%7531902468``:<>PYFGCRL?^AOEUIDHTNS_""QJKXBMWVZ")
 mapper.addLayout(pDvorak)
 
-mapper.disableLayout()
-
 Menu, TRAY, Add
+Menu, TRAY, Add, Qwerty, OnDisable
 For index, value in mapper.layoutNames() {
 	Menu, TRAY, Add, % value, OnSelectItem
 }
@@ -113,7 +113,13 @@ Loop, Parse, specialKeys
 return
 
 OnSelectItem(ItemName, ItemPos, MenuName){
+	global mapper
 	mapper.switchLayout(ItemName)
+}
+
+OnDisable(ItemName, ItemPos, MenuName){
+	global mapper
+	mapper.disableLayout()
 }
 
 OnKeyPress:
@@ -124,14 +130,4 @@ OnUpperKeyPress:
 	key := SubStr(A_ThisHotkey, 2, 1)
 	StringUpper, key, key
 	mapper.sendKey(key)
-return
-
-F1::
-	mapper.disableLayout()
-return
-F2::
-	mapper.switchLayout("Dvorak")
-return
-F3::
-	mapper.switchLayout("Programmers Dvorak")
 return
