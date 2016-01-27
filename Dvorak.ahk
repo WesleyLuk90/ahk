@@ -87,8 +87,8 @@ dvorak.setShiftLayout("~!@#$%^&*()_+""<>PYFGCRL?+AOEUIDHTNS_:QJKXBMWVZ")
 mapper.addLayout(dvorak)
 
 pDvorak := new KeyboardLayout("Programmers Dvorak")
-pDvorak.setNormalLayout("$&[{}(=*)+]!#;,.pyfgcrl/@aoeuidhtns-'qjkxbmwvz")
-pDvorak.setShiftLayout("~%7531902468``:<>PYFGCRL?^AOEUIDHTNS_""QJKXBMWVZ")
+pDvorak.setNormalLayout("$&[{}(=*)+]!#',.pyfgcrl/@aoeuidhtns-;qjkxbmwvz")
+pDvorak.setShiftLayout("~%7531902468``""<>PYFGCRL?^AOEUIDHTNS_:QJKXBMWVZ")
 mapper.addLayout(pDvorak)
 
 Menu, TRAY, Add
